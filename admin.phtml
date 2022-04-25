@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <script src="js/admin.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Dashboard Administration</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($articles as $article): ?>
+                    <tr>
+                        <td><?=$article['title'];?></td>
+                        <td><?=(new DateTimeImmutable($article['createdAt']))->format('d/m/Y');?></td>
+                        <td>
+                            <?php if ($article['image']): ?>
+                                <img src="images/<?=$article['image'];?>" alt="">
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="edit_article.php?id=<?=$article['id'];?>"><i class="fa-solid fa-pen-to-square"></i> Modifier</a>
+                            <a class="delete-article-button" href="delete_article.php?id=<?=$article['id'];?>"><i class="fa-solid fa-trash-can"></i> Supprimer</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </body>
+        </table>
+    </main>
+</body>
+</html>

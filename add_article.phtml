@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'ajout d'article</title>
+</head>
+<body>
+    <main>
+        <form method="POST" action="add_article.php">
+            <fieldset>
+                <legend>Ajouter un article</legend>
+                <div>
+                    <label for="title">Titre de l'article</label>
+                    <input type="text" id="title" name="title">
+                    <?php if (isset($errors['title'])): ?>
+                        <p class="error"><?=$errors['title'];?></p>
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <label for="abstract">Résumé de l'article</label>
+                    <textarea id="abstract" name="abstract"></textarea>
+                </div>
+                <div>
+                    <label for="content">Contenu de l'article</label>
+                    <textarea id="content" name="content"></textarea>
+                    <?php if (isset($errors['content'])): ?>
+                        <p class="error"><?=$errors['content'];?></p>
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <label for="image">Image</label>
+                    <input type="text" id="image" name="image">
+                </div>
+                <input type="submit" value="Enregistrer">
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
